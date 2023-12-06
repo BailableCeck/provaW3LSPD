@@ -63,22 +63,21 @@ def internal():
     error_message = None  # Initialize error message
 
     if form.validate_on_submit():
-        person_name = form.person_name.data
+        comune = form.person_name.data  # Modifica il nome del campo nel form
 
         # Make a GET request to the FastAPI backend
-        fastapi_url = f'{FASTAPI_BACKEND_HOST}/query/{person_name}'
+        fastapi_url = f'{FASTAPI_BACKEND_HOST}/query/{comune}'  # Aggiorna l'URL per includere il comune
         response = requests.get(fastapi_url)
-
         if response.status_code == 200:
             # Extract and display the result from the FastAPI backend
             data = response.json()
-            result = data.get('birthday', f'Error: Birthday not available for {person_name}')
+            accomodations = data.get('denominazione_alloggio', [])
+            result = ', '.join(accomodations) if accomodations else f'No accomodations available for {comune}'
             return render_template('internal.html', form=form, result=result, error_message=error_message)
         else:
-            error_message = f'Error: Unable to fetch birthday for {person_name} from FastAPI Backend'
+            error_message = f'Error: Unable to fetch accommodation for {comune} from FastAPI Backend'
 
     return render_template('internal.html', form=form, result=None, error_message=error_message)
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
