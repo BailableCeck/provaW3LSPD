@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fetched</title>
+    <!-- Collegamento a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Collegamento a cloudflare per la lente CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <style>
+    .jumbotron-with-background {
+        background-image: url("{{ url_for('static', filename='images/veneto.png') }}");
+        background-size: cover;
+        background-position: center; 
+        color: #fff; 
+        position: relative; 
+
+    }
+    </style>
+  </head>
+  
+  <body style="background-color: #008080;">
+    <!-- Navbar -->
+    <div class="top-bar">
+      {% include 'navbar.html' %}
+    </div>
+
+    <div class="container-fluid">
+     
+      <div class="d-flex justify-content-between align-items-center p-2 top-bar top-bar-search" style="height: 50vh;">
+        <div class="input-group inp">
+            <input class="form-control" type="search" placeholder="Where do you want to go?" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary whitebutton" type="button">
+                   
+                    <i class="fas fa-search" style="background-color: white; border-radius: 0 4px 4px 0;"></i>
+                  </button>
+            </div>
+          </div>
+          
+          
+      </div>
+
+     
+
+      <div class = "jumbotron">
+        <p class="first-quote">“Live life with no excuses, travel with no regret” <br> - Oscar Wilde</p>
+        <p class="second-quote">“No reason to stay, is a good reason to go” <br> - Camilla Cabello </p>
+        
+
+      </div>
+      <div class="jumbotron jumbotron-with-background" >
+            
+        <div class="row">
+            <!-- Top row with 4 buttons -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <a class="btn btn-primary btn-lg greenbtn btn-block offset-lg-2" href="{{ url_for('padova') }}" role="button"><strong>Padova</strong></a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <a class="btn btn-primary btn-lg greenbtn btn-block offset-lg-2" href="{{ url_for('venezia') }}" role="button"><strong>Venezia</strong></a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <a class="btn btn-primary btn-lg greenbtn btn-block offset-lg-4" href="{{ url_for('verona') }}" role="button"><strong>Verona</strong></a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <a class="btn btn-primary btn-lg greenbtn btn-block offset-lg-5" href="{{ url_for('belluno') }}" role="button"><strong>Belluno</strong></a>
+            </div>
+          </div>
+          
+          <div class="row mt-2">
+            <!-- Bottom row with 3 buttons -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <a class="btn btn-primary btn-lg greenbtn btn-block offset-lg-6" href="{{ url_for('treviso') }}" role="button"><strong>Treviso</strong></a>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <a class="btn btn-primary btn-lg greenbtn btn-block offset-lg-4" href="{{ url_for('vicenza') }}" role="button"><strong>Vicenza</strong></a>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <a class="btn btn-primary btn-lg greenbtn btn-block offset-lg-2" href="{{ url_for('rovigo') }}" role="button"><strong>Rovigo</strong></a>
+            </div>
+          </div>
+          
+
+      </div>
+      <footer>
+        <div class="container">
+            <h3>Stay Updated</h3>
+            <p>Subscribe to our newsletter for the latest updates.</p>
+            <div class="footer-form">
+                <input type="email" placeholder="Enter your email" class="form-control">
+                <button class="btn btn-primary">Sign Up</button>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Collegamento a Bootstrap JavaScript (opzionale) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
