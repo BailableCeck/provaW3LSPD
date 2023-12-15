@@ -1,12 +1,14 @@
 import os
 import sys
 from fastapi.testclient import TestClient
+from fastapi import status
+from app.main import app
+import pandas as pd
+
 
 # Add the project root to the sys.path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # Now you can do the relative import
-from app.main import app
-
 
 """
 Execute this test by running on the terminal (from the app/) the command:
@@ -47,3 +49,42 @@ def test_success_read_item_module():
     response = client.get("/module/search/Albert Einstein")
     assert response.status_code == 200
     assert response.json() == ["Albert Einstein's birthday is 03/14/1879."]
+
+
+
+
+def test_query_endpoint_success():
+    comune = "Verona"
+    response = client.get(f"/query/{comune}")
+    assert response.status_code == status.HTTP_200_OK
+    data = response.json()
+    assert data["comune"] == comune
+    assert "risultati" in data
+    assert "musei_consigliati" in data
+
+def test_query_endpoint_no_results():
+    comune = "ComuneInesistente"
+    response = client.get(f"/query/{comune}")
+    assert response.status_code == status.HTTP_200_OK
+    data = response.json()
+    assert data["error"] == "Alloggio non trovato"
+    assert "risultati" not in data
+    assert "musei_consigliati" not in data
+
+def test_query_endpoint_with_piscina():
+    comune = "Verona"
+    response = client.get(f"/query/{comune}?piscina=true")
+    assert response.status_code == status.HTTP_200_OK
+    data = response.json()
+    assert data["comune"] == comune
+    assert "risultati" in data
+    assert "musei_consigliati" in data
+
+def test_query_endpoint_musei_only():
+    comune = "Venezia"
+    response = client.get(f"/query/{comune}")
+    assert response.status_code == status.HTTP_200_OK
+    data = response.json()
+    assert data["comune"] == comune
+    assert "risultati" not in data
+    assert "musei_consigliati" in data
