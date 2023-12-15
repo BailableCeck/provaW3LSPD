@@ -1,3 +1,23 @@
+<head>
+    <!-- Other head tags... -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+</head>
+
+<style>
+    .accommodation-list, .museum-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .accommodation-item, .museum-item {
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 8px;
+    }
+</style>
+
+
 {% extends 'base.html' %}
 
 {% block title %} Internal of Frontend {% endblock %}
@@ -16,17 +36,44 @@
                 {{ form.person_name(class="form-control", placeholder="Enter person name") }}
             </div>
             {{ form.submit(class="btn btn-primary") }}
+            <div class="form-group form-check">
+                {{ form.piscina_checkbox.label(class="form-check-label") }}
+                {{ form.piscina_checkbox(class="form-check-input") }}
+            </div>
         </form>
 
-        <!-- Display the result here -->
+            
+            <!-- Display the result here -->
         <div id="resultContainer" class="mt-3">
-            {% if result %}
-                <p>{{ result }}</p>
+            {% if result_strutture %}
+                <h2><i class="fas fa-home"></i> Strutture consigliate</h2><br><br>
+                <div class="accommodation-list">
+                    {% for struttura in result_strutture %}
+                        <div class="accommodation-item">
+                            <h5>
+                                {% if "link" in struttura %}
+                                    <a href="http://{{ struttura.link }}" target="_blank">{{ struttura.nome }}</a>
+                                {% else %}
+                                    {{ struttura.nome }}
+                                {% endif %}
+                            </h5>
+                        </div>
+                    {% endfor %}
+                </div>
             {% endif %}
+            
+            {% if result_musei %}
+                <br><h2><i class="fas fa-university"></i> Musei consigliati</h2><br><br>
+                    <div class="museum-item">{{ result_musei }}</div>
+            {% endif %}
+            
             {% if error_message %}
                 <p class="text-danger">{{ error_message }}</p>
             {% endif %}
         </div>
+
+
+
         
 
     </div>

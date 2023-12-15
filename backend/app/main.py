@@ -55,7 +55,6 @@ def read_item(comune: str):
         dict: Accommodation information for the provided comune.
     """
     comune = comune.upper()  # Convert to title case for consistency
-
     # Cerca l'alloggio nel Data Frame in base al comune
     results = df[df['COMUNE'] == comune]['DENOMINAZIONE'].tolist()
 
