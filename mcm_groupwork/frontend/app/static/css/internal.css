@@ -1,0 +1,59 @@
+
+body {
+    background-color: #ffffff; /* Set background color */
+    color: #000000; /* Set the default text color */
+}
+
+.container {
+    background-color: #008080;
+    width: 80%; /* Adjust the width of the container */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Header style */
+h1 {
+    color: #ffffff; /* Main color for headers */
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: #008080;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Result Display Styles */
+#resultContainer {
+    margin-top: 20px;
+}
+
+.accommodation-list, .museum-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.accommodation-item, .museum-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.text-danger {
+    color: red; /* Color for error messages */
+}
