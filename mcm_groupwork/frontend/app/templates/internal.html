@@ -23,7 +23,11 @@
     }
 </style>
 
-
+<body style="background-color: #ffffff;">
+    <!-- Navbar -->
+    <div class="top-bar">
+      {% include 'navbar.html' %}
+    </div>
 {% extends 'base.html' %}
 
 {% block title %} Internal of Frontend {% endblock %}
@@ -31,15 +35,15 @@
 {% block content %}
 
     <div class="container mt-5">
-        <h1>Hello, Internal Page!</h1>
-        <p>This is an internal page for interacting with a FastAPI backend.</p>
+        <h1>Look for a city</h1>
+        <p>Here you can search for a city in Veneto</p>
 
         <!-- WTForms Form to get input from the user -->
         <form method="POST" action="">
             {{ form.csrf_token }}
             <div class="form-group">
                 {{ form.person_name.label }}
-                {{ form.person_name(class="form-control", placeholder="Enter person name") }}
+                {{ form.person_name(class="form-control", placeholder="Enter city...") }}
             </div>
             {{ form.submit(class="btn btn-primary") }}
             <div class="form-group form-check">
@@ -58,7 +62,7 @@
                         <div class="accommodation-item">
                             <h5>
                                 {% if "link" in struttura %}
-                                    <a href="http://{{ struttura.link }}" target="_blank">{{ struttura.nome }}</a>
+                                    <a href="http://{{ struttura.link }}" target="_blank" class="custom_link">{{ struttura.nome }}</a>
                                 {% else %}
                                     {{ struttura.nome }}
                                 {% endif %}
@@ -69,7 +73,8 @@
             {% endif %}
             
             {% if result_musei %}
-                <br><h2><i class="fas fa-university"></i> Musei consigliati</h2><br><br>
+                <br><br>
+                <h2><i class="fas fa-university"></i> Musei consigliati</h2><br>
                     <div class="museum-item">{{ result_musei }}</div>
             {% endif %}
             
@@ -77,12 +82,14 @@
                 <p class="text-danger">{{ error_message }}</p>
             {% endif %}
         </div>
-
-
-
-        
-
     </div>
+<br><br>
 
+     <!-- Back Home button -->
+   <div class="torna-home-button">
+    <form action="{{ url_for('index')}}">
+      <button class="torna-home" type="submit">Back to Home</button>
+    </form>
+   </div> 
 
 {% endblock %}

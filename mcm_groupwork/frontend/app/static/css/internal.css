@@ -1,18 +1,17 @@
 
 body {
-    background-color: #ffffff; /* Set background color */
-    color: #000000; /* Set the default text color */
+    background-color: #ffffff; 
+    color: #000000; 
 }
 
 .container {
-    background-color: #008080;
-    width: 80%; /* Adjust the width of the container */
-    margin: 0 auto; /* Center the container */
+    width: 100%; 
+    margin: 0 auto; 
 }
 
 /* Header style */
 h1 {
-    color: #ffffff; /* Main color for headers */
+    color: #008080; /* Main color for headers */
 }
 
 /* Form Styles */
@@ -38,22 +37,58 @@ h1 {
 
 /* Result Display Styles */
 #resultContainer {
+    background-color: #ffffff;
     margin-top: 20px;
+}
+/* Ipertextual link */
+#resultContainer .custom_link{
+    color:#ffffff;
+}
+#resultContainer .custom_link:hover{
+    color:#b76df7;
 }
 
 .accommodation-list, .museum-list {
+    background-color: #ffffff;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
 .accommodation-item, .museum-item {
-    border: 1px solid #ddd;
+    border: 1px solid #008080;
     padding: 10px;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #008080;
+    color:#ffffff
 }
 
 .text-danger {
-    color: red; /* Color for error messages */
+    color: rgb(1, 46, 54); /* Color for error messages */
 }
+
+/* Styling the "back home" button */
+.torna-home-button{
+    text-align: center;
+   
+}
+
+.torna-home {
+    align-items: center;
+    padding: 10px; 
+    background-color: #044a4a; 
+    color: #fff; 
+    border:none;
+    border-radius: 5px; 
+    cursor: pointer; /* Change color when over*/
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  /* Add style for mouse */
+  .torna-home:hover {
+    background-color: #b76df7; 
+  }
+
+
+
