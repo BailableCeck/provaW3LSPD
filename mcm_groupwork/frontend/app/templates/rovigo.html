@@ -34,15 +34,14 @@
     <div class="description">
         <h2>About Rovigo</h2>
         <p>Rovigo is a picturesque town situated in the Veneto region of northeastern Italy. Steeped in history and surrounded by the fertile plains of the Po Valley, Rovigo offers a charming blend of architectural beauty, cultural heritage, and a relaxed way of life. </p>
-
+<br>
         <h2>Must-Visit Places</h2>
         <ul>
             <li>Palazzo Roncale</li>
             <li>Cathedral of Rovigo</li>
             <li>Vittorio Emanuele II's square</li>
-           
         </ul>
-
+<br>
         <h2>Discover the Beauty</h2>
         <p>Rovigo's culinary scene is influenced by the bounty of its agricultural surroundings, with local dishes showcasing the flavors of fresh produce and rice, a regional specialty. The town's unhurried pace, vibrant traditions, and welcoming atmosphere make it a delightful destination for those seeking an authentic Italian experience.</p>
     </div>
@@ -65,6 +64,13 @@
         // Change background every 5 seconds
         setInterval(changeBackground, 5000);
     </script>
+    
+    <!-- Back Home button -->
+   <div class="torna-home-button">
+    <form action="{{ url_for('index')}}">
+      <button class="torna-home" type="submit">Back to Home</button>
+    </form>
+   </div>
 </body>
 
 </html>

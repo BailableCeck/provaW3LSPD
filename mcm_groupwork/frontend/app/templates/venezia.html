@@ -34,7 +34,7 @@
     <div class="description">
         <h2>About Venice</h2>
         <p>Venice is a unique and enchanting city located in northeastern Italy. Built on a network of canals and islands within the Venetian Lagoon, Venice is renowned for its picturesque waterways, historic architecture, and artistic heritage.</p>
-
+<br>
         <h2>Must-Visit Places</h2>
         <ul>
             <li>Basilica di San Marco </li>
@@ -42,7 +42,7 @@
             <li>Rialto Bridge</li>
             <!--<li>Botanical Garden of Padova</li>-->
         </ul>
-
+<br>
         <h2>Discover the Beauty</h2>
         <p>Beyond its architectural marvels, Venice is celebrated for its cultural contributions, including art, music, and literature. The city has been a hub of artistic innovation, producing renowned figures such as Titian, Tintoretto, and Canaletto. 
             Venice's annual Carnival is a world-famous event, attracting visitors with its elaborate masks, costumes, and festive atmosphere.</p>
@@ -66,6 +66,13 @@
         // Change background every 5 seconds
         setInterval(changeBackground, 5000);
     </script>
+    
+    <!-- Back Home button -->
+   <div class="torna-home-button">
+    <form action="{{ url_for('index')}}">
+      <button class="torna-home" type="submit">Back to Home</button>
+    </form>
+   </div>
 </body>
 
 </html>

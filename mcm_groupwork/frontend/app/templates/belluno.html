@@ -35,7 +35,7 @@
         <h2>About Belluno</h2>
         <p>Belluno is a charming town located in the Veneto region of northern Italy, situated in the foothills of the Dolomite Mountains. Nestled within a picturesque valley, Belluno is known for its stunning natural surroundings, historic architecture, and cultural heritage. 
             The town boasts a well-preserved medieval city center with narrow winding streets, charming squares, and colorful buildings.</p>
-
+<br>
         <h2>Must-Visit Places</h2>
         <ul>
             <li>Cattedrale di San Martino</li>
@@ -43,11 +43,11 @@
             <li>Civic Tower</li>
            
         </ul>
-
+<br>
         <h2>Discover the Beauty</h2>
         <p>Culturally, Belluno has a rich history influenced by both Italian and Austrian traditions. The town has retained its distinct character and serves as a gateway to the Dolomite region, known for its unique blend of alpine and Mediterranean cultures. Belluno's welcoming atmosphere, historical charm, and proximity to the breathtaking Dolomite landscapes make it a delightful destination for those seeking a combination of cultural exploration and outdoor adventure.</p>
     </div>
-
+   
     <!-- Bootstrap JavaScript (optional) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -65,7 +65,13 @@
     
         // Change background every 5 seconds
         setInterval(changeBackground, 5000);
-    </script>
+   </script>
+   <!-- Back Home button -->
+   <div class="torna-home-button">
+    <form action="{{ url_for('index')}}">
+      <button class="torna-home" type="submit">Back to Home</button>
+    </form>
+  </div>
+   
 </body>
-
 </html>

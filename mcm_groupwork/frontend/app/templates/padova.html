@@ -34,7 +34,7 @@
     <div class="description">
         <h2>About Padova</h2>
         <p>Padova is a beautiful city in northern Italy's Veneto region. It is known for its rich history, stunning architecture, and vibrant culture. Explore the charming streets, visit historic landmarks like the Scrovegni Chapel with its famous frescoes by Giotto, and enjoy the lively atmosphere of local cafes and markets.</p>
-
+<br>
         <h2>Must-Visit Places</h2>
         <ul>
             <li>The Scrovegni Chapel</li>
@@ -42,7 +42,7 @@
             <li>Padua Cathedral</li>
             <li>Botanical Garden of Padova</li>
         </ul>
-
+<br>
         <h2>Discover the Beauty</h2>
         <p>Whether you're interested in art, history, or simply strolling through picturesque streets, Padova has something to offer for every traveler. Immerse yourself in the beauty and charm of this enchanting Italian city.</p>
     </div>
@@ -65,6 +65,13 @@
         // Change background every 5 seconds
         setInterval(changeBackground, 5000);
     </script>
+    
+    <!-- Back Home button -->
+   <div class="torna-home-button">
+    <form action="{{ url_for('index')}}">
+      <button class="torna-home" type="submit">Back to Home</button>
+    </form>
+   </div>
 </body>
 
 </html>

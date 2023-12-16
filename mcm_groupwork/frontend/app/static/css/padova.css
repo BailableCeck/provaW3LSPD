@@ -1,5 +1,5 @@
 body {
-    background-color: #f8f9fa;
+    background-color: #008080;
 }
 
 .jumbotron {
@@ -41,3 +41,28 @@ body {
     background-color: #008080;
     
 }
+
+/* Styling the "back home" button */
+.torna-home-button{
+    text-align: center;
+    background-color: #008080;
+}
+
+.torna-home {
+    align-items: center;
+    padding: 10px; 
+    background-color: #044a4a; 
+    color: #fff; 
+    border:none;
+    border-radius: 5px; 
+    cursor: pointer; /* Change color when over*/
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  /* Add style for mouse */
+  .torna-home:hover {
+    background-color: #b76df7; 
+  }
+  
+  

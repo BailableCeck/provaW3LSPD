@@ -34,7 +34,7 @@
     <div class="description">
         <h2>About Verona</h2>
         <p>Discover the enchanting city of Verona, where history, romance, and cultural richness converge to create an immersive experience.</p>
-
+<br>
         <h2>Must-Visit Places</h2>
         <ul>
             <li>Arena</li>
@@ -42,7 +42,7 @@
             <li>Piazza delle Erbe</li>
             <li>Ponte Pietra</li>
         </ul>
-
+<br>
         <h2>Discover the Beauty</h2>
         <p>Whether you're captivated by historical architecture, seeking a romantic getaway, or craving authentic Italian cuisine, Verona invites you to explore its timeless charm. Plan your visit and uncover the beauty of this captivating city.</p>
     </div>
@@ -65,6 +65,13 @@
         // Change background every 5 seconds
         setInterval(changeBackground, 5000);
     </script>
+
+    <!-- Back Home button -->
+   <div class="torna-home-button">
+    <form action="{{ url_for('index')}}">
+      <button class="torna-home" type="submit">Back to Home</button>
+    </form>
+   </div>
 </body>
 
 </html>
