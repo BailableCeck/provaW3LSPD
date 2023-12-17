@@ -13,13 +13,14 @@ from wtforms.validators import DataRequired
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'  # Replace with a secure secret key
-# Configuration for the FastAPI backend URL
-FASTAPI_BACKEND_HOST = 'http://backend'  # Replace with the actual URL of your FastAPI backend
+
+"""Configuration for the FastAPI backend URL"""
+FASTAPI_BACKEND_HOST = 'http://backend'  
 BACKEND_URL = f'{FASTAPI_BACKEND_HOST}/query/'
 
 
 
-# Form class to handle query input from the user
+""" Form class to handle query input from the user"""
 class QueryForm(FlaskForm):
     person_name = StringField('Destination:')
     piscina_checkbox = BooleanField('Swimming pool')
@@ -34,7 +35,8 @@ def index():
     Returns:
         str: Rendered HTML content for the index page.
     """
-    # Fetch the date from the backend
+    
+    #Fetch the date from the backend
     
     return render_template('index.html')
 
@@ -66,7 +68,17 @@ def vicenza():
 def rovigo():
     return render_template('rovigo.html')
 
-# Handle the internal page form submission and render the results.
+"""
+    Handle the internal page form submission and render the results.
+
+    This function handles form submission from the internal page,
+    interacts with the FastAPI backend based on form inputs
+    and renders the results on the internal page.
+
+    Returns:
+        str: Rendered HTML content for the internal page.
+    """
+
 @app.route('/internal', methods=['GET', 'POST'])
 def internal():
     form = QueryForm()
@@ -75,16 +87,16 @@ def internal():
     if form.validate_on_submit():
         comune = form.person_name.data
 
-        # Obtain checkbox's values from form
+        """Obtain checkbox's values from form"""
         piscina_filter = form.piscina_checkbox.data
-        # Refresh URL to include filters
+        """ Refresh URL to include filters"""
         fastapi_url = f'{FASTAPI_BACKEND_HOST}/query/{comune}?piscina={piscina_filter}'  
 
-        # Make a GET request to the FastAPI backend
+        """Make a GET request to the FastAPI backend"""
         response = requests.get(fastapi_url)
 
         if response.status_code == 200:
-            # Extract and display the result from the FastAPI backend
+            """Extract and display the result from the FastAPI backend"""
             data = response.json()
             accomodations = data.get('risultati', [])
            
@@ -97,7 +109,7 @@ def internal():
                     else:
                         result_strutture.append({"nome": struttura["nome"]})
 
-                # Debug print to check the value of result_strutture
+                """Debug print to check the value of result_strutture"""
                 print("Result_strutture:", result_strutture)
 
                 if not result_strutture:
@@ -105,7 +117,7 @@ def internal():
             else:
                 result_strutture = [{"nome": f'No accomodations available for {comune}'}]
 
-            # Extract museum's information
+            """ Extract museum's information """
             musei_consigliati = data.get('musei_consigliati', [])
             result_musei = ', '.join(musei_consigliati) if musei_consigliati else f'No recommended museums for {comune}'
 
