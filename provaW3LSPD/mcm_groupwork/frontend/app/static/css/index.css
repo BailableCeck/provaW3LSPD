@@ -1,0 +1,108 @@
+.top-bar{
+    background-color:#008080 ;
+}
+
+.top-bar-search{
+  margin-top: -150px;
+}
+
+/* Styling quotes*/
+.first-quote{
+  font-family: cursive;
+  font-weight: bold;
+  color: #008080;
+  position: relative;
+  right: 65%;
+  text-align: right;
+  font-size: 15pt;
+
+}
+.second-quote{
+  font-family: cursive;
+  font-weight: bold;
+  color: #008080;
+  position: relative;
+  right: 15%;
+  text-align: right;
+  font-size: 15pt;
+
+}
+
+/* Styling initial section */
+.greenbtn{
+    background-color: #008080;
+    height: 180px;
+    width: 220px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    
+}
+.greenbtn:hover {
+     transform: scale(1.05); /* Increase the size by 10% */
+     background-color: #008080;
+}
+.whitebutton{
+    background-color: white;
+}
+.inp{
+    width: 600px;
+    align-items: center;
+    border-radius: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+    left: 35%;
+}
+.jumbotron{
+  margin: -15px;
+  border-radius: 0;
+  
+}
+
+.jumbotron-with-background::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgb(255, 255, 255, 0.5); /* Adjust the opacity (0.5 for 50% opacity) */
+    }
+
+  /* Styling footer */
+    footer {
+        background-color: #008080;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    /* Style the email input and signup button */
+    .footer-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .footer-form input,
+    .footer-form button {
+        margin: 5px;
+    }
+    .footer-form button{
+      background-color: #004747b5;
+      width: 100px;
+      height: 50px;
+    }
+    .footer-form button:hover{
+      background-color: #004747b5;
+      
+
+    }

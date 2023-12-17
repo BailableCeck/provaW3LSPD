@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Padova</title>
+
+    <!-- Links for stylesheets-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/padova.css">
+    
+    <!-- Styling the initial images-->
+    <style>
+    .jumbotron {
+        background-size: cover;
+        background-position: center;
+        background-image: url("static/images/prato.jpg"); 
+        color: #fff;
+        text-align: center;
+        padding: 100px 20px;
+        margin-bottom: 0;
+        position: relative;
+        overflow: hidden;
+        height: 700px;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Including navbar -->
+    {% include 'navbar.html' %}
+
+    <!-- Defining class for slideshow-->
+    <div class="jumbotron jumbotron-with-background" id="slideshow">
+      
+    <!-- City description-->    
+        <h1>Padova</h1>
+    </div>
+
+    <div class="description">
+        <h2>About Padova</h2>
+        <p>Padova is a beautiful city in northern Italy's Veneto region. It is known for its rich history, stunning architecture, and vibrant culture. Explore the charming streets, visit historic landmarks like the Scrovegni Chapel with its famous frescoes by Giotto, and enjoy the lively atmosphere of local cafes and markets.</p>
+<br>
+        <h2>Must-Visit Places</h2>
+        <ul>
+            <li>The Scrovegni Chapel</li>
+            <li>Prato della Valle</li>
+            <li>Padua Cathedral</li>
+            <li>Botanical Garden of Padova</li>
+        </ul>
+<br>
+        <h2>Discover the Beauty</h2>
+        <p>Whether you're interested in art, history, or simply strolling through picturesque streets, Padova has something to offer for every traveler. Immerse yourself in the beauty and charm of this enchanting Italian city.</p>
+    </div>
+
+    <!-- Bootstrap JavaScript (optional) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        var images = ['padova.jpeg', 'padova_piazza.jpg', 'padova_prato.jpeg', 'padova_cappella.jpeg']; 
+        var currentIndex = 0;
+    
+        function changeBackground() {
+            currentIndex = (currentIndex + 1) % images.length;
+            var imageUrl = 'static/images/' + images[currentIndex];
+            document.getElementById('slideshow').style.backgroundImage = 'url("' + imageUrl + '")';
+        }
+    
+        // Change background every 5 seconds
+        setInterval(changeBackground, 5000);
+    </script>
+    
+    <!-- Creating Back Home button -->
+   <div class="torna-home-button">
+    <form action="{{ url_for('index')}}">
+      <button class="torna-home" type="submit">Back to Home</button>
+    </form>
+   </div>
+</body>
+
+</html>

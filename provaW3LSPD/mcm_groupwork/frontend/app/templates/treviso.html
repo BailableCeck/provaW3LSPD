@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Treviso</title>
+
+    <!-- Linking stylesheets-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/padova.css">
+    
+    <!-- Styling initial images-->
+    <style>
+    .jumbotron {
+        background-size: cover;
+        background-position: center;
+        background-image: url("static/images/treviso.jpeg"); 
+        color: #fff;
+        text-align: center;
+        padding: 100px 20px;
+        margin-bottom: 0;
+        position: relative;
+        overflow: hidden;
+        height: 700px;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Including navbar-->
+    {% include 'navbar.html' %}
+
+    <!-- Defining class for slideshow-->
+    <div class="jumbotron jumbotron-with-background" id="slideshow">
+        
+    <!-- City description-->
+        <h1>Treviso</h1>
+    </div>
+
+    <div class="description">
+        <h2>About Treviso</h2>
+        <p>Treviso is a charming city in the Veneto region of northeastern Italy. Known for its rich history, artistic heritage, and picturesque landscapes, Treviso offers a unique blend of medieval architecture and modern amenities. The city is traversed by canals and retains a well-preserved medieval city center with narrow cobbled streets and historic buildings.</p>
+<br>
+        <h2>Must-Visit Places</h2>
+        <ul>
+            <li>Piazza dei Signori</li>
+            <li>Palazzo dei Trecento</li>
+            <li>Cathedral of San Pietro</li>
+            <li>Church of San Francesco</li>
+        </ul>
+<br>
+        <h2>Discover the Beauty</h2>
+        <p>In addition to its historical and cultural attractions, Treviso is a culinary destination, offering a variety of local dishes and specialties. The city's relaxed atmosphere and proximity to the Venetian lagoon make it an appealing destination for those seeking a blend of history, art, and authentic Italian experiences.</p>
+    </div>
+
+    <!-- Bootstrap JavaScript (optional) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        var images = ['treviso.jpeg', 'treviso_piazza.jpeg', 'treviso_duomo.jpeg', 'treviso_sile.jpeg']; 
+        var currentIndex = 0;
+    
+        function changeBackground() {
+            currentIndex = (currentIndex + 1) % images.length;
+            var imageUrl = 'static/images/' + images[currentIndex];
+            document.getElementById('slideshow').style.backgroundImage = 'url("' + imageUrl + '")';
+        }
+    
+        // Change background every 5 seconds
+        setInterval(changeBackground, 5000);
+    </script>
+    
+    <!-- Creating Back Home button -->
+   <div class="torna-home-button">
+    <form action="{{ url_for('index')}}">
+      <button class="torna-home" type="submit">Back to Home</button>
+    </form>
+   </div>
+</body>
+
+</html>

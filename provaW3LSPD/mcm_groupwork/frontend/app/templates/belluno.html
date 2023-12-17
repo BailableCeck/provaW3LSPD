@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Belluno</title>
+
+    <!-- Links to stylesheets-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/padova.css">
+    
+    <!-- Styling beginning images -->
+    <style>
+    .jumbotron {
+        background-size: cover;
+        background-position: center;
+        background-image: url("static/images/belluno.jpeg"); 
+        color: #fff;
+        text-align: center;
+        padding: 100px 20px;
+        margin-bottom: 0;
+        position: relative;
+        overflow: hidden;
+        height: 700px;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar inclusion-->
+    {% include 'navbar.html' %}
+
+    <!-- Defining class for slideshow-->
+    <div class="jumbotron jumbotron-with-background" id="slideshow">
+        
+        <h1>Belluno</h1>
+    </div>
+
+    <!-- Description of the city -->
+    <div class="description">
+        <h2>About Belluno</h2>
+        <p>Belluno is a charming town located in the Veneto region of northern Italy, situated in the foothills of the Dolomite Mountains. Nestled within a picturesque valley, Belluno is known for its stunning natural surroundings, historic architecture, and cultural heritage. 
+            The town boasts a well-preserved medieval city center with narrow winding streets, charming squares, and colorful buildings.</p>
+<br>
+        <h2>Must-Visit Places</h2>
+        <ul>
+            <li>Cattedrale di San Martino</li>
+            <li>Palazzo dei Rettori</li>
+            <li>Civic Tower</li>
+           
+        </ul>
+<br>
+        <h2>Discover the Beauty</h2>
+        <p>Culturally, Belluno has a rich history influenced by both Italian and Austrian traditions. The town has retained its distinct character and serves as a gateway to the Dolomite region, known for its unique blend of alpine and Mediterranean cultures. Belluno's welcoming atmosphere, historical charm, and proximity to the breathtaking Dolomite landscapes make it a delightful destination for those seeking a combination of cultural exploration and outdoor adventure.</p>
+    </div>
+   
+    <!-- Bootstrap JavaScript (optional) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        var images = ['belluno.jpeg', 'belluno_patcodolomiti.jpeg', 'belluno_dolomiti.jpeg', 'belluno_lago.jpeg']; 
+        var currentIndex = 0;
+    
+        function changeBackground() {
+            currentIndex = (currentIndex + 1) % images.length;
+            var imageUrl = 'static/images/' + images[currentIndex];
+            document.getElementById('slideshow').style.backgroundImage = 'url("' + imageUrl + '")';
+        }
+    
+        // Change background every 5 seconds
+        setInterval(changeBackground, 5000);
+   </script>
+
+   <!-- Creating Back Home button -->
+   <div class="torna-home-button">
+    <form action="{{ url_for('index')}}">
+      <button class="torna-home" type="submit">Back to Home</button>
+    </form>
+  </div>
+   
+</body>
+</html>
