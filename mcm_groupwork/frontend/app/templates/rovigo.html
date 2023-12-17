@@ -5,9 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rovigo</title>
+
+    <!-- Linking Stylesheets-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/padova.css">
     
+    <!-- Styling initial images-->
     <style>
     .jumbotron {
         background-size: cover;
@@ -25,9 +28,11 @@
 </head>
 
 <body>
+    <!-- Including navbar -->
     {% include 'navbar.html' %}
     <div class="jumbotron jumbotron-with-background" id="slideshow">
         
+    <!-- City description -->
         <h1>Rovigo</h1>
     </div>
 
@@ -65,7 +70,7 @@
         setInterval(changeBackground, 5000);
     </script>
     
-    <!-- Back Home button -->
+    <!-- Creating Back Home button -->
    <div class="torna-home-button">
     <form action="{{ url_for('index')}}">
       <button class="torna-home" type="submit">Back to Home</button>

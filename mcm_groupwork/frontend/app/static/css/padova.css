@@ -2,6 +2,7 @@ body {
     background-color: #008080;
 }
 
+/* Styling initial images*/
 .jumbotron {
     background-size: cover;
     background-position: center;
@@ -25,21 +26,20 @@ body {
 }
 
 .jumbotron-with-background h1 {
-    color: #fff; /* Set the text color */
-    font-size: 7em; /* Adjust the font size */
-    font-weight: bold; /* Set the font weight */
+    color: #fff; 
+    font-size: 7em; 
+    font-weight: bold; 
     position: relative; /* Ensure z-index works */
     top: 35%;
     z-index: 2; /* Set a higher z-index value */
-    /* Add any other styles you want to override */
 }
 
+/* Styling descriptions */
 .description {
     padding: 50px;
     text-align: justify;
     color:white;
-    background-color: #008080;
-    
+    background-color: #008080; 
 }
 
 /* Styling the "back home" button */
@@ -60,7 +60,7 @@ body {
     margin-top: 10px;
   }
   
-  /* Add style for mouse */
+  /* Add style when over the link */
   .torna-home:hover {
     background-color: #b76df7; 
   }

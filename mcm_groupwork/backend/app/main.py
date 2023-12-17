@@ -59,12 +59,13 @@ def read_item(
     ):
     comune = comune.upper()
 
-    # Cerca l'alloggio nel Data Frame in base al comune
+    # Look for accomodation in Data Frame based on municipality
     results = df[df['COMUNE'] == comune]
 
-    # Aggiungi la logica per filtrare in base alla presenza della piscina
+    # Add logic to filter based on swimming pool
     if piscina is not None and piscina:
         results = results[results['PISCINA'] == 'Vero']
+
 
     # Aggiungi la logica per filtrare in base alla presenza dell'accesso ai disabili
     if accesso_disabili is not None and accesso_disabili:
@@ -90,17 +91,17 @@ def read_item(
     denominazione_alloggio = results['DENOMINAZIONE'].tolist()
     link_alloggio = results['SITO WEB'].tolist()  # Assumi che la colonna LINK contenga i link delle strutture
 
-    # Cerca i musei nel Data Frame in base al comune
+    # Look for museums in Data Frame based on municipality
     results_musei = df_musei[df_musei['Comune'] == comune]
 
-    # Estrai il nome dei musei
+    # Extract museum's name
     denominazione_musei = results_musei['Nome'].tolist()
 
-    # Costruisci la lista di risultati con nomi cliccabili
+    # Build results' list with clickable names
     result_list = []
     for nome, link in zip(denominazione_alloggio, link_alloggio):
         result_item = {"nome": nome}
-        if pd.notna(link):  # Controlla se il link non è NaN
+        if pd.notna(link):  # Check link is not NaN
             result_item["link"] = link
         result_list.append(result_item)
     print(f"{result_list}")
