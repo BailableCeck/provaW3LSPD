@@ -29,14 +29,15 @@ def read_root():
 
 
 @app.get('/query/{comune}')
+#Filter by 7 variables below (True or False)
 def read_item(
     comune: str,
-    piscina: Optional[bool] = Query(None, description="Filter by piscina (True or False)."),
-    accesso_disabili: Optional[bool] = Query(None, description="Filter by accesso ai disabili (True or False)."),
-    fitness: Optional[bool] = Query(None, description="Filter by fitness (True or False)."),
-    sauna: Optional[bool] = Query(None, description="Filter by sauna (True or False)."),
-    aria_condizionata: Optional[bool] = Query(None, description="Filter by aria condizionata (True or False)."),
-    animali_amessi: Optional[bool] = Query(None, description="Filter by animali ammessi (True or False).")
+    piscina: Optional[bool] = Query(None),
+    accesso_disabili: Optional[bool] = Query(None),
+    fitness: Optional[bool] = Query(None),
+    sauna: Optional[bool] = Query(None),
+    aria_condizionata: Optional[bool] = Query(None),
+    animali_amessi: Optional[bool] = Query(None)
 ):
     comune = comune.upper()
 
