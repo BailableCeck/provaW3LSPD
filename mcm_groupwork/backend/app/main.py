@@ -15,8 +15,6 @@ from fastapi import Query
 from typing import List
 
 
-
-
 #from .mymodules.birthdays import return_birthday, print_birthdays_str
 
 app = FastAPI()
