@@ -14,6 +14,7 @@ from fastapi import Query
 
 app = FastAPI()
 
+#Load data from .csv files
 df = pd.read_csv('/app/app/output.csv')
 df_musei = pd.read_csv('/app/app/musei_veneto.csv')
 
@@ -39,6 +40,21 @@ def read_item(
     aria_condizionata: Optional[bool] = Query(None),
     animali_amessi: Optional[bool] = Query(None)
 ):
+    """
+    Retrieve accommodation and museum information based on specified filters.
+
+    Args:
+        comune (str): The municipality for which to retrieve information.
+        piscina (Optional[bool]): Filter by swimming pool availability.
+        accesso_disabili (Optional[bool]): Filter by disabled access availability.
+        fitness (Optional[bool]): Filter by fitness facilities availability.
+        sauna (Optional[bool]): Filter by sauna availability.
+        aria_condizionata (Optional[bool]): Filter by air conditioning availability.
+        animali_amessi (Optional[bool]): Filter by pet-friendly accommodation availability.
+
+    Returns:
+        dict: Accommodation and museum information based on specified filters.
+    """
     comune = comune.upper()
 
     results = df[df['COMUNE'] == comune]
