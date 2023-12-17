@@ -108,3 +108,19 @@ Validates the query endpoint with multiple parameters except "sauna"" and ensure
 
 "test_query_endpoint_musei_only()"
 Tests the query endpoint with a municipality and "piscina"" parameter for expected responses related to museums.
+
+## GENERATING DOCUMENTATION
+In order to generate the documentation of the project, "pydoc" is used. Pydoc is a tool that automatically generates documentation from Python modules.
+
+1. Open a Terminal/Command Prompt;
+
+2. Navigate to the project directory:
+   cd mcm_groupwork
+
+3. Run pydoc program using the following command:
+   pydoc -w ./
+This command will generate HTML documentation for all modules in the current directory and its subdirectories.
+
+4. Access Generated Documentation:
+Once the command completes, some HTML files corresponding to the modules in the project will be generated. 
+Open these HTML files in your web browser to view the documentation.
