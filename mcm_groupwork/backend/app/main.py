@@ -58,9 +58,6 @@ def read_item(
     if aria_condizionata is not None and aria_condizionata:
         results = results[results['ARIA CONDIZIONATA'] == 'Vero']
 
-    if animali_amessi is not None and animali_amessi:
-        results = results[results['ANIMALI AMMESSI'] == 'Vero']
-
     denominazione_alloggio = results['DENOMINAZIONE'].tolist()
     link_alloggio = results['SITO WEB'].tolist()
     indirizzo_alloggio = results['INDIRIZZO'].tolist()  # Aggiunto
@@ -88,13 +85,3 @@ def read_item(
     else:
         return {"error": "Alloggio non trovato"}
 
-@app.get('/get-date')
-def get_date():
-    """
-    Endpoint to get the current date.
-
-    Returns:
-        dict: Current date in ISO format.
-    """
-    current_date = datetime.now().isoformat()
-    return JSONResponse(content={"date": current_date})
