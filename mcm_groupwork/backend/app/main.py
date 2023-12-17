@@ -6,36 +6,17 @@ as the backend for the project.
 """
 
 from fastapi import FastAPI
-from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from datetime import datetime
 import pandas as pd
-from typing import Optional
+from typing import Optional, List
 from fastapi import Query
-from typing import List
-
-
-#from .mymodules.birthdays import return_birthday, print_birthdays_str
 
 app = FastAPI()
 
-# Dictionary of birthdays
-#birthdays_dictionary = {
-#    'Albert Einstein': '03/14/1879',
-#    'Benjamin Franklin': '01/17/1706',
-#    'Ada Lovelace': '12/10/1815',
-#    'Donald Trump': '06/14/1946',
-#    'Rowan Atkinson': '01/6/1955'
-#}
-
 df = pd.read_csv('/app/app/output.csv')
 df_musei = pd.read_csv('/app/app/musei_veneto.csv')
-"""
-@app.get('/csv_show')
-def read_and_return_csv():
-    aux = df['Age'].values
-    return{"Age": str(aux.argmin())}
-"""
+
 @app.get('/')
 def read_root():
     """
@@ -56,69 +37,46 @@ def read_item(
     sauna: Optional[bool] = Query(None, description="Filter by sauna (True or False)."),
     aria_condizionata: Optional[bool] = Query(None, description="Filter by aria condizionata (True or False)."),
     animali_amessi: Optional[bool] = Query(None, description="Filter by animali ammessi (True or False).")
-    ):
+):
     comune = comune.upper()
 
-    # Look for accomodation in Data Frame based on municipality
     results = df[df['COMUNE'] == comune]
 
-    # Add logic to filter based on swimming pool
     if piscina is not None and piscina:
         results = results[results['PISCINA'] == 'Vero']
 
-
-    # Aggiungi la logica per filtrare in base alla presenza dell'accesso ai disabili
     if accesso_disabili is not None and accesso_disabili:
         results = results[results['ACCESSO AI DISABILI'] == 'Vero']
-    
-    # Aggiungi la logica per filtrare in base alla presenza dell'accesso ai disabili
+
     if fitness is not None and fitness:
         results = results[results['FITNESS'] == 'Vero']
 
-    # Aggiungi la logica per filtrare in base alla presenza dell'accesso ai disabili
     if sauna is not None and sauna:
         results = results[results['SAUNA'] == 'Vero']
-    
-    # Aggiungi la logica per filtrare in base alla presenza dell'accesso ai disabili
+
     if aria_condizionata is not None and aria_condizionata:
         results = results[results['ARIA CONDIZIONATA'] == 'Vero']
 
-    # Aggiungi la logica per filtrare in base alla presenza dell'accesso ai disabili
     if animali_amessi is not None and animali_amessi:
         results = results[results['ANIMALI AMMESSI'] == 'Vero']
 
-    # Estrai il nome dell'alloggio e il link associato
     denominazione_alloggio = results['DENOMINAZIONE'].tolist()
-    link_alloggio = results['SITO WEB'].tolist()  # Assumi che la colonna LINK contenga i link delle strutture
+    link_alloggio = results['SITO WEB'].tolist()
 
-    # Look for museums in Data Frame based on municipality
     results_musei = df_musei[df_musei['Comune'] == comune]
-
-    # Extract museum's name
     denominazione_musei = results_musei['Nome'].tolist()
 
-    # Build results' list with clickable names
     result_list = []
     for nome, link in zip(denominazione_alloggio, link_alloggio):
         result_item = {"nome": nome}
-        if pd.notna(link):  # Check link is not NaN
+        if pd.notna(link):
             result_item["link"] = link
         result_list.append(result_item)
-    print(f"{result_list}")
+
     if denominazione_musei or denominazione_alloggio:
         return {"comune": comune, "risultati": result_list, "musei_consigliati": denominazione_musei}
     else:
         return {"error": "Alloggio non trovato"}
-"""
-@app.get('/module/search/{person_name}')
-def read_item_from_module(person_name: str):
-    return {return_birthday(person_name)}
-
-
-@app.get('/module/all')
-def dump_all_birthdays():
-    return {print_birthdays_str()}
-"""
 
 @app.get('/get-date')
 def get_date():
