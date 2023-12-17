@@ -20,6 +20,12 @@ client = TestClient(app)
 
 
 def test_read_main():
+    """
+    Test the root endpoint ("/") to ensure it returns the expected response.
+
+    Returns:
+        None
+    """
     response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"Funziona?": "World"}
@@ -40,12 +46,24 @@ def test_read_main():
 
 # Defining 4 tests
 def test_query_endpoint_success():
+    """
+    Test the query endpoint with valid parameters to ensure it returns the expected response.
+
+    Returns:
+        None
+    """
     comune = "Monfumo"
     response = client.get(f"/query/{comune}")
     assert response.json() == {"comune": 'MONFUMO', 'musei_consigliati':[], 
                                "risultati": [{'nome': 'DA GERRY LOCANDA', 'link': 'www.ristorantedagerry.com'}, {'nome': "AGRITURISMO GHISOLANA - DALL'EST LISA", 'link': 'www.agriturismoalcapitello.it'}, {'nome': 'CASA ROSA AGRITURISMO - GIRARDI GIUSEPPINA'}]}
 
 def test_query_endpoint_no_results():
+    """
+    Test the query endpoint with a municipality that has no results, ensuring it returns the expected response.
+
+    Returns:
+        None
+    """
     comune = "ComuneInesistente"
     response = client.get(f"/query/{comune}")
     assert response.status_code == status.HTTP_200_OK
@@ -55,6 +73,12 @@ def test_query_endpoint_no_results():
     assert "musei_consigliati" not in data
 
 def test_query_endpoint_with_piscina():
+    """
+    Test the query endpoint with a municipality and piscina parameter, ensuring it returns the expected response.
+
+    Returns:
+        None
+    """
     comune = "zero branco"
     response = client.get(f"/query/{comune}?piscina=true")
     assert response.status_code == status.HTTP_200_OK
@@ -62,6 +86,12 @@ def test_query_endpoint_with_piscina():
                                "risultati": [{'nome': 'GIUSTO ELISA - B&B SOLOQUI', 'link': 'www.soloqui.com'}]}
 
 def test_query_endpoint_musei_only():
+    """
+    Test the query endpoint with a municipality and piscina parameter, ensuring it returns the expected response.
+
+    Returns:
+        None
+    """
     comune = "nove"
     response = client.get(f"/query/{comune}?piscina=true")
     assert response.status_code == status.HTTP_200_OK
