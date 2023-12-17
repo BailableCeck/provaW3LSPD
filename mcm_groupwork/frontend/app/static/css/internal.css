@@ -19,17 +19,43 @@ h1 {
     position: relative;
 }
 
-
-/* Form Styles */
-.form-group {
-    margin-bottom: 20px;
+.form-group.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; 
+    
+}
+.check-background{
+    background-color: #008080;
+    border-radius: 10px;
+    width: 250px;
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+}
+.btn-green{
+    background-color: #044a4a !important;
+  
+   
+    
 }
 
-.form-control {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.form-check-input {
+    width: 20px; 
+    height: 20px; 
+    margin-right: 5px; 
+    background-color: #008080;
+    border: 1px solid #008080;
+    border-radius: 4px; 
+}
+
+.form-check-label {
+    
+    color: white; 
+    font-weight: bold; 
+}
+.custom-control-input{
+    color:#008080;
 }
 
 .btn-primary {
@@ -54,14 +80,14 @@ h1 {
     color:#b76df7;
 }
 
-.accommodation-list, .museum-list {
+.accommodation-list {
     background-color: #ffffff;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
-.accommodation-item, .museum-item {
+.accommodation-item{
     border: 1px solid #008080;
     padding: 10px;
     border-radius: 8px;
@@ -93,8 +119,23 @@ h1 {
   
   /* Add style for mouse */
   .torna-home:hover {
-    background-color: #b76df7; 
+    background-color: #044a4a83;  
   }
 
 
 
+  .museum-item table tbody tr:nth-child(odd) {
+    background-color: #008080; 
+    color: white;
+}
+
+.museum-item table tbody tr:nth-child(even) {
+    background-color: #044a4a; 
+    color: white;
+}
+.museum-item table thead th {
+    background-color: #000000;  
+
+    
+    color: #ffffff; 
+}
