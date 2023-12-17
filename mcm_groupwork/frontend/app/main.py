@@ -9,7 +9,7 @@ import requests  # Import the requests library to make HTTP requests
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, BooleanField
 from wtforms.validators import DataRequired
-
+from flask import request
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'  # Replace with a secure secret key
@@ -30,7 +30,7 @@ class QueryForm(FlaskForm):
     sauna_checkbox = BooleanField('Sauna Checkbox')
     aria_condizionata_checkbox = BooleanField('Aria Condizionata Checkbox')
     animali_amessi_checkbox = BooleanField('Animali Ammessi Checkbox')
-    submit = SubmitField('Search')
+    submit_field = SubmitField('Search')
 
 
 @app.route('/')

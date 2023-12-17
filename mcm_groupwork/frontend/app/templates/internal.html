@@ -6,7 +6,28 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <link rel="stylesheet" href="static/css/internal.css">
 
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Controlla se ci sono parametri "comune" nella URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const comuneParam = urlParams.get('comune');
+        const form = document.getElementById('searchForm');
     
+        // Controlla se il form non è stato sottomesso e se ci sono parametri "comune"
+        if (!form.hasBeenSubmitted && comuneParam) {
+            // Segna il form come sottomesso
+            form.hasBeenSubmitted = true;
+    
+            // Se ci sono parametri, esegui la ricerca
+            form.person_name.value = decodeURIComponent(comuneParam);
+    
+            // Rimuovi il parametro "comune" dalla URL prima di sottomettere il form
+            history.replaceState({}, document.title, window.location.pathname);
+    
+            form.submit();
+        }
+    });
+    </script>
 </head>
 
 <!-- Defining style for results' lists -->
@@ -41,13 +62,13 @@
         <h6>Here you can search for a city in Veneto</h6>
 
         <!-- WTForms Form to get input from the user -->
-        <form method="POST" action="">
+        <form id="searchForm" method="POST" action="">
             {{ form.csrf_token }}
             <div class="form-group">
                 {{ form.person_name.label }}
-                {{ form.person_name(class="form-control", placeholder="Enter city...") }}
+                {{ form.person_name(value=request.args.get('comune', ''), class="form-control", placeholder="Enter city...") }}
             </div>
-            {{ form.submit(class="btn btn-primary") }}
+            {{ form.submit_field(class="btn btn-primary") }}
             <div class="form-group form-check">
                 {{ form.piscina_checkbox.label(class="form-check-label") }}
                 {{ form.piscina_checkbox(class="form-check-input") }}
