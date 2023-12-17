@@ -119,6 +119,7 @@ In order to generate the documentation of the project, "pydoc" is used. Pydoc is
 
 3. Run pydoc program using the following command:
    pydoc -w ./
+   
 This command will generate HTML documentation for all modules in the current directory and its subdirectories.
 
 4. Access Generated Documentation:
