@@ -1,7 +1,10 @@
+<!-- Defining navbar's style-->
 <div style="background-color: #008080;">
     <nav class="navbar navbar-expand-lg navbar-light top-bar">
         <img src="{{url_for('static', filename= 'images/fetched.png')}}" alt="Logo" height="100">
-    <div class="collapse navbar-collapse" id="navbarNav">
+   
+        <!-- Building the navbar-->
+        <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
             <a class="nav-link text-white" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>

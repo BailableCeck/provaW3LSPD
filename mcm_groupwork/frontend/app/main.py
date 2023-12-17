@@ -19,10 +19,11 @@ BACKEND_URL = f'{FASTAPI_BACKEND_HOST}/query/'
 
 
 
+# Form class to handle query input from the user
 class QueryForm(FlaskForm):
-    person_name = StringField('Person Name:')
-    piscina_checkbox = BooleanField('Piscina Checkbox')
-    submit = SubmitField('Get Birthday from FastAPI Backend')
+    person_name = StringField('Destination:')
+    piscina_checkbox = BooleanField('Swimming pool')
+    submit = SubmitField('Search')
 
 
 @app.route('/')
@@ -65,6 +66,7 @@ def vicenza():
 def rovigo():
     return render_template('rovigo.html')
 
+# Handle the internal page form submission and render the results.
 @app.route('/internal', methods=['GET', 'POST'])
 def internal():
     form = QueryForm()
@@ -73,9 +75,9 @@ def internal():
     if form.validate_on_submit():
         comune = form.person_name.data
 
-        # Ottenere i valori delle checkbox dal form
+        # Obtain checkbox's values from form
         piscina_filter = form.piscina_checkbox.data
-        # Aggiorna l'URL per includere i filtri
+        # Refresh URL to include filters
         fastapi_url = f'{FASTAPI_BACKEND_HOST}/query/{comune}?piscina={piscina_filter}'  
 
         # Make a GET request to the FastAPI backend
@@ -103,7 +105,7 @@ def internal():
             else:
                 result_strutture = [{"nome": f'No accomodations available for {comune}'}]
 
-            # Estrai informazioni sui musei
+            # Extract museum's information
             musei_consigliati = data.get('musei_consigliati', [])
             result_musei = ', '.join(musei_consigliati) if musei_consigliati else f'No recommended museums for {comune}'
 
