@@ -22,8 +22,14 @@ BACKEND_URL = f'{FASTAPI_BACKEND_HOST}/query/'
 
 """ Form class to handle query input from the user"""
 class QueryForm(FlaskForm):
+
     person_name = StringField('Destination:')
-    piscina_checkbox = BooleanField('Swimming pool')
+    piscina_checkbox = BooleanField('Piscina Checkbox')
+    accesso_disabili_checkbox = BooleanField('Accesso Disabili Checkbox')
+    fitness_checkbox = BooleanField('Fitness Checkbox')
+    sauna_checkbox = BooleanField('Sauna Checkbox')
+    aria_condizionata_checkbox = BooleanField('Aria Condizionata Checkbox')
+    animali_amessi_checkbox = BooleanField('Animali Ammessi Checkbox')
     submit = SubmitField('Search')
 
 
@@ -89,8 +95,15 @@ def internal():
 
         """Obtain checkbox's values from form"""
         piscina_filter = form.piscina_checkbox.data
-        """ Refresh URL to include filters"""
-        fastapi_url = f'{FASTAPI_BACKEND_HOST}/query/{comune}?piscina={piscina_filter}'  
+
+        accesso_disabili_filter = form.accesso_disabili_checkbox.data
+        fitness_filter = form.fitness_checkbox.data
+        sauna_filter = form.sauna_checkbox.data
+        aria_condizionata_filter = form.aria_condizionata_checkbox.data
+        animali_amessi_filter = form.animali_amessi_checkbox.data
+
+        # Aggiorna l'URL per includere i filtri
+        fastapi_url = f'{FASTAPI_BACKEND_HOST}/query/{comune}?piscina={piscina_filter}&accesso_disabili={accesso_disabili_filter}&fitness={fitness_filter}&sauna={sauna_filter}&aria_condizionata={aria_condizionata_filter}&animali_ammessi={animali_amessi_filter}'  
 
         """Make a GET request to the FastAPI backend"""
         response = requests.get(fastapi_url)
