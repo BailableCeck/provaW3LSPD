@@ -24,12 +24,12 @@ class QueryForm(FlaskForm):
     """
 
     person_name = StringField('Destination:')
-    piscina_checkbox = BooleanField('Piscina Checkbox')
-    accesso_disabili_checkbox = BooleanField('Accesso Disabili Checkbox')
-    fitness_checkbox = BooleanField('Fitness Checkbox')
-    sauna_checkbox = BooleanField('Sauna Checkbox')
-    aria_condizionata_checkbox = BooleanField('Aria Condizionata Checkbox')
-    animali_amessi_checkbox = BooleanField('Animali Ammessi Checkbox')
+    piscina_checkbox = BooleanField('Swimming pool')
+    accesso_disabili_checkbox = BooleanField('Disabled access')
+    fitness_checkbox = BooleanField('Fitness corner')
+    sauna_checkbox = BooleanField('Sauna')
+    aria_condizionata_checkbox = BooleanField('Air conditioning')
+    animali_amessi_checkbox = BooleanField('Pets allowed')
     submit_field = SubmitField('Search')
 
 

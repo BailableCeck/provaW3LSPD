@@ -76,8 +76,8 @@ def read_item(
 
     denominazione_alloggio = results['DENOMINAZIONE'].tolist()
     link_alloggio = results['SITO WEB'].tolist()
-    indirizzo_alloggio = results['INDIRIZZO'].tolist()  # Aggiunto
-    numero_telefono = results['TELEFONO'].tolist()  # Aggiunto
+    indirizzo_alloggio = results['INDIRIZZO'].tolist()  
+    numero_telefono = results['TELEFONO'].tolist()  
 
     results_musei = df_musei[df_musei['Comune'] == comune]
     denominazione_musei = results_musei['Nome'].tolist()
@@ -87,9 +87,9 @@ def read_item(
         result_item = {"nome": nome}
         if pd.notna(link):
             result_item["link"] = link
-        if pd.notna(indirizzo):  # Aggiunto blocco per l'indirizzo
+        if pd.notna(indirizzo):  
             result_item["indirizzo"] = indirizzo
-        if pd.notna(telefono):  # Aggiunto blocco per il telefono
+        if pd.notna(telefono):  
             result_item["telefono"] = telefono
 
         result_list.append(result_item)
