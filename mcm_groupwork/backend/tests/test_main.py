@@ -38,7 +38,7 @@ def test_read_main():
     assert response.json() == {"Albert Einstein's birthday is 03/14/1879."} """
 
 
-
+# Defining 4 tests
 def test_query_endpoint_success():
     comune = "Monfumo"
     response = client.get(f"/query/{comune}")
