@@ -26,7 +26,7 @@ class QueryForm(FlaskForm):
     person_name = StringField('Destination:')
     piscina_checkbox = BooleanField('Swimming pool')
     accesso_disabili_checkbox = BooleanField('Disabled access')
-    fitness_checkbox = BooleanField('Fitness corner')
+    fitness_checkbox = BooleanField('Gym')
     sauna_checkbox = BooleanField('Sauna')
     aria_condizionata_checkbox = BooleanField('Air conditioning')
     animali_amessi_checkbox = BooleanField('Pets allowed')
