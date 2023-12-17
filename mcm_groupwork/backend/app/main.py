@@ -48,7 +48,15 @@ def read_root():
 
 
 @app.get('/query/{comune}')
-def read_item(comune: str, piscina: Optional[bool] = Query(None, description="Filter by piscina (True or False).")):
+def read_item(
+    comune: str,
+    piscina: Optional[bool] = Query(None, description="Filter by piscina (True or False)."),
+    accesso_disabili: Optional[bool] = Query(None, description="Filter by accesso ai disabili (True or False)."),
+    fitness: Optional[bool] = Query(None, description="Filter by fitness (True or False)."),
+    sauna: Optional[bool] = Query(None, description="Filter by sauna (True or False)."),
+    aria_condizionata: Optional[bool] = Query(None, description="Filter by aria condizionata (True or False)."),
+    animali_amessi: Optional[bool] = Query(None, description="Filter by animali ammessi (True or False).")
+    ):
     comune = comune.upper()
 
     # Cerca l'alloggio nel Data Frame in base al comune
@@ -57,6 +65,26 @@ def read_item(comune: str, piscina: Optional[bool] = Query(None, description="Fi
     # Aggiungi la logica per filtrare in base alla presenza della piscina
     if piscina is not None and piscina:
         results = results[results['PISCINA'] == 'Vero']
+
+    # Aggiungi la logica per filtrare in base alla presenza dell'accesso ai disabili
+    if accesso_disabili is not None and accesso_disabili:
+        results = results[results['ACCESSO AI DISABILI'] == 'Vero']
+    
+    # Aggiungi la logica per filtrare in base alla presenza dell'accesso ai disabili
+    if fitness is not None and fitness:
+        results = results[results['FITNESS'] == 'Vero']
+
+    # Aggiungi la logica per filtrare in base alla presenza dell'accesso ai disabili
+    if sauna is not None and sauna:
+        results = results[results['SAUNA'] == 'Vero']
+    
+    # Aggiungi la logica per filtrare in base alla presenza dell'accesso ai disabili
+    if aria_condizionata is not None and aria_condizionata:
+        results = results[results['ARIA CONDIZIONATA'] == 'Vero']
+
+    # Aggiungi la logica per filtrare in base alla presenza dell'accesso ai disabili
+    if animali_amessi is not None and animali_amessi:
+        results = results[results['ANIMALI AMMESSI'] == 'Vero']
 
     # Estrai il nome dell'alloggio e il link associato
     denominazione_alloggio = results['DENOMINAZIONE'].tolist()
