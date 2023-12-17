@@ -63,17 +63,26 @@ def read_item(
 
     denominazione_alloggio = results['DENOMINAZIONE'].tolist()
     link_alloggio = results['SITO WEB'].tolist()
+    indirizzo_alloggio = results['INDIRIZZO'].tolist()  # Aggiunto
+    numero_telefono = results['TELEFONO'].tolist()  # Aggiunto
+
+    print(f"PRINT DEGLI INDIRIZZIZIZIZII {numero_telefono}")
 
     results_musei = df_musei[df_musei['Comune'] == comune]
     denominazione_musei = results_musei['Nome'].tolist()
 
     result_list = []
-    for nome, link in zip(denominazione_alloggio, link_alloggio):
+    for nome, link, indirizzo, telefono in zip(denominazione_alloggio, link_alloggio, indirizzo_alloggio, numero_telefono):
         result_item = {"nome": nome}
         if pd.notna(link):
             result_item["link"] = link
-        result_list.append(result_item)
+        if pd.notna(indirizzo):  # Aggiunto blocco per l'indirizzo
+            result_item["indirizzo"] = indirizzo
+        if pd.notna(telefono):  # Aggiunto blocco per il telefono
+            result_item["telefono"] = telefono
 
+        result_list.append(result_item)
+    print(f"PRINT Di tutto t fdsfsndfjsndf {result_list}")
     if denominazione_musei or denominazione_alloggio:
         return {"comune": comune, "risultati": result_list, "musei_consigliati": denominazione_musei}
     else:

@@ -107,10 +107,14 @@ def internal():
             if accomodations:
                 result_strutture = []
                 for struttura in accomodations:
+                    result_item = {"nome": struttura["nome"]}
                     if "link" in struttura:
-                        result_strutture.append({"nome": struttura["nome"], "link": struttura["link"]})
-                    else:
-                        result_strutture.append({"nome": struttura["nome"]})
+                        result_item["link"] = struttura["link"]
+                    if "indirizzo" in struttura:
+                        result_item["indirizzo"] = struttura["indirizzo"]
+                    if "telefono" in struttura:
+                        result_item["telefono"] = struttura["telefono"]
+                    result_strutture.append(result_item)
 
                 # Debug print to check the value of result_strutture
                 print("Result_strutture:", result_strutture)
