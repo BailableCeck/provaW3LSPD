@@ -5,12 +5,12 @@ This module defines a FastAPI application that serves
 as the backend for the project.
 """
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from fastapi.responses import JSONResponse
 from datetime import datetime
 import pandas as pd
 from typing import Optional, List
-from fastapi import Query
+
 
 app = FastAPI()
 
@@ -82,8 +82,6 @@ def read_item(
     indirizzo_alloggio = results['INDIRIZZO'].tolist()  # Aggiunto
     numero_telefono = results['TELEFONO'].tolist()  # Aggiunto
 
-    print(f"PRINT DEGLI INDIRIZZIZIZIZII {numero_telefono}")
-
     results_musei = df_musei[df_musei['Comune'] == comune]
     denominazione_musei = results_musei['Nome'].tolist()
 
@@ -98,7 +96,7 @@ def read_item(
             result_item["telefono"] = telefono
 
         result_list.append(result_item)
-    print(f"PRINT Di tutto t fdsfsndfjsndf {result_list}")
+
     if denominazione_musei or denominazione_alloggio:
         return {"comune": comune, "risultati": result_list, "musei_consigliati": denominazione_musei}
     else:
