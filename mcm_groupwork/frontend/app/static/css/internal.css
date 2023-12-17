@@ -14,6 +14,10 @@ h1 {
     color: #008080; /* Main color for headers */
 }
 
+/* Aggiungi questo stile per posizionare l'indirizzo sotto il nome */
+.accommodation-item {
+    position: relative;
+}
 
 
 /* Form Styles */

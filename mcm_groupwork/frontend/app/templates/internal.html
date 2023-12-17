@@ -28,6 +28,7 @@
         }
     });
     </script>
+    
 </head>
 
 <!-- Defining style for results' lists -->
@@ -50,6 +51,7 @@
     <!-- Including navbar -->
     <div class="top-bar">
       {% include 'navbar.html' %}
+      
     </div>
 {% extends 'base.html' %}
 
@@ -110,10 +112,17 @@
                                     {{ struttura.nome }}
                                 {% endif %}
                             </h5>
+                            {% if struttura.indirizzo %}
+                                <p class="indirizzo">{{ struttura.indirizzo }}</p>
+                            {% endif %}
+                            {% if struttura.telefono %}  <!-- Aggiunto blocco per il telefono -->
+                                <p class="telefono">Telefono: {{ struttura.telefono }}</p>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 </div>
             {% endif %}
+
             
             {% if result_musei %}
                 <br><br>
