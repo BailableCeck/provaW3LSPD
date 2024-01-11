@@ -5,9 +5,20 @@
     <!-- Links to tylesheets--> 
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <link rel="stylesheet" href="static/css/internal.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
    <script>
     document.addEventListener('DOMContentLoaded', function () {
+
+        const viewStyle = document.querySelector('select[name="viewStyle"]');
+        viewStyle.addEventListener('change', function () {
+        const selectedStyle = viewStyle.value;
+        document.getElementById('resultContainer').className = selectedStyle;
+        });
+
+        const resultContainer = document.getElementById('resultContainer');
+        resultContainer.classList.add('animate__animated', 'animate__fadeIn');
         // Check if there is "comune" parameter in URL
         const urlParams = new URLSearchParams(window.location.search);
         const comuneParam = urlParams.get('comune');
@@ -44,6 +55,11 @@
         padding: 10px;
         border-radius: 8px;
     }
+    .linea .accommodation-list, .linea .museum-list {
+    grid-template-columns: repeat(1, 1fr);
+    
+    }
+
 </style>
 
 <body style="background-color: #ffffff;">
@@ -99,11 +115,19 @@
                 {{ form.accesso_disabili_checkbox(class="form-check-input") }}
             </div>
         </div>
+        <div class="form-group">
+            <i class="fas fa-th-large" aria-hidden="true"></i>
+            <label for="viewStyle">Visualizzazione:</label>
+            <select name="viewStyle" class="form-control">
+                <option value="blocchi">A blocchi</option>
+                <option value="linea">In linea</option>
+            </select>
+        </div>
         </form>
 
             <br>
             <!-- Display the result here -->
-        <div id="resultContainer" class="mt-3">
+        <div id="resultContainer" class="mt-3 animate__animated animate__fadeIn">
             {% if result_strutture %}
                 <h2><i class="fas fa-home"></i> Lodging suggested</h2><br><br>
                 <div class="accommodation-list">
