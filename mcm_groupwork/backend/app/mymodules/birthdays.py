@@ -1,4 +1,4 @@
-birthdays = {
+'''birthdays = {
     'Albert Einstein': '03/14/1879',
     'Benjamin Franklin': '01/17/1706',
     'Ada Lovelace': '12/10/1815',
@@ -18,4 +18,4 @@ def return_birthday(name):
     if name in birthdays:
         return('{}\'s birthday is {}.'.format(name, birthdays[name]))
     else:
-        return('Sadly, we don\'t have {}\'s birthday.'.format(name))
+        return('Sadly, we don\'t have {}\'s birthday.'.format(name))'''
