@@ -3,12 +3,14 @@ import sys
 from fastapi.testclient import TestClient
 from fastapi import status
 import pandas as pd
-from app.main import app
 
 # Add the project root to the sys.path
 sys.path.insert(
     0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 )
+
+from app.main import app
+
 
 """
 Execute this test by running on the terminal (from the app/) the command:
