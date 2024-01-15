@@ -41,7 +41,7 @@
     
 }
 .greenbtn:hover {
-     transform: scale(1.05); /* Increase the size by 10% */
+     transform: scale(1.05); /* Increase the size by 5% */
      background-color: #008080;
 }
 .whitebutton{
@@ -57,7 +57,7 @@
     justify-content: center;
     padding: 5px;
     position: relative;
-    left: 35%;
+    left: 30%;
 }
 .jumbotron{
   margin: -15px;
@@ -91,6 +91,9 @@
         align-items: center;
         margin-top: 20px;
     }
+    .btn-primary {
+      border: none !important;
+  }
 
     .footer-form input,
     .footer-form button {
@@ -103,6 +106,4 @@
     }
     .footer-form button:hover{
       background-color: #004747b5;
-      
-
     }
