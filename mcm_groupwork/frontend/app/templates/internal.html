@@ -55,6 +55,25 @@
         padding: 10px;
         border-radius: 8px;
     }
+
+.form-group.form-check {
+    border-color: #ccc!important;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 2px solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    flex: 1 0 calc(33.33% - 40px);
+} /* Distribuire su tre colonne con uno spazio di 40px tra di esse */
+.form-check-label {
+    color: #333;
+    font-weight: bold;
+}
+
     .linea .accommodation-list, .linea .museum-list {
     grid-template-columns: repeat(1, 1fr);
     
@@ -115,21 +134,30 @@
                 {{ form.accesso_disabili_checkbox(class="form-check-input") }}
             </div>
         </div>
-        <div class="form-group">
-            <i class="fas fa-th-large" aria-hidden="true"></i>
-            <label for="viewStyle">Visualizzazione:</label>
-            <select name="viewStyle" class="form-control">
-                <option value="blocchi">A blocchi</option>
-                <option value="linea">In linea</option>
-            </select>
-        </div>
         </form>
 
             <br>
             <!-- Display the result here -->
         <div id="resultContainer" class="mt-3 animate__animated animate__fadeIn">
             {% if result_strutture %}
-                <h2><i class="fas fa-home"></i> Lodging suggested</h2><br><br>
+
+
+            <div class="parent">
+                <div class="child">
+                    <h2><i class="fas fa-home"></i> Lodging suggested</h2><br><br>
+                </div>
+                
+                <div class="child">
+                    <i class="fas fa-th-large" aria-hidden="true"></i>
+                    <label for="viewStyle">Visualizzazione:</label>
+                    <select name="viewStyle" class="form-control">
+                        <option value="blocchi">A blocchi</option>
+                        <option value="linea">In linea</option>
+                    </select>
+                </div>
+            </div>
+
+
                 <div class="accommodation-list">
                     {% for struttura in result_strutture %}
                         <div class="accommodation-item">
@@ -144,7 +172,7 @@
                                 <p class="indirizzo">{{ struttura.indirizzo }}</p>
                             {% endif %}
                             {% if struttura.telefono %}  <!-- Telephone checkbox added -->
-                                <p class="telefono">Telefono: {{ struttura.telefono }}</p>
+                                <p class="telefono">Phone number: {{ struttura.telefono }}</p>
                             {% endif %}
                         </div>
                     {% endfor %}
