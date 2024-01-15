@@ -23,7 +23,7 @@ class QueryForm(FlaskForm):
     Form class to handle query input from the user.
     """
 
-    person_name = StringField('Destination:')
+    destination = StringField('Destination:')
     piscina_checkbox = BooleanField('Swimming pool')
     accesso_disabili_checkbox = BooleanField('Disabled access')
     fitness_checkbox = BooleanField('Fitness corner')
@@ -134,7 +134,7 @@ def internal():
     error_message = None
 
     if form.validate_on_submit():
-        comune = form.person_name.data
+        comune = form.destination.data
 
         """Obtain checkbox's values from form."""
         piscina_filter = form.piscina_checkbox.data
