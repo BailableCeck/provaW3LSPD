@@ -40,6 +40,16 @@
     border-radius: 20px;
     
 }
+.btn-outline-secondary:hover {
+  color: #555; 
+  background-color: white;
+  border-color: #ccc;
+}
+.btn-index{
+  color: #008080; 
+  background-color: white;
+  border-color: #ccc;
+}
 .greenbtn:hover {
      transform: scale(1.05); /* Increase the size by 5% */
      background-color: #008080;
