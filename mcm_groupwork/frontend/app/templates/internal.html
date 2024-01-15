@@ -12,10 +12,12 @@
     document.addEventListener('DOMContentLoaded', function () {
 
         const viewStyle = document.querySelector('select[name="viewStyle"]');
+        if (viewStyle) {
         viewStyle.addEventListener('change', function () {
-        const selectedStyle = viewStyle.value;
-        document.getElementById('resultContainer').className = selectedStyle;
+            const selectedStyle = viewStyle.value;
+            document.getElementById('resultContainer').className = selectedStyle;
         });
+    }
 
         const resultContainer = document.getElementById('resultContainer');
         resultContainer.classList.add('animate__animated', 'animate__fadeIn');
@@ -41,26 +43,6 @@
     </script>
     
 </head>
-
-<!-- Defining style for results' lists -->
-<style>
-    .accommodation-list, .museum-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 20px;
-    }
-
-    .accommodation-item{
-        border: 1px solid #ddd;
-        padding: 10px;
-        border-radius: 8px;
-    }
-    .linea .accommodation-list, .linea .museum-list {
-    grid-template-columns: repeat(1, 1fr);
-    
-    }
-
-</style>
 
 <body style="background-color: #ffffff;">
 
@@ -115,21 +97,24 @@
                 {{ form.accesso_disabili_checkbox(class="form-check-input") }}
             </div>
         </div>
-        <div class="form-group">
-            <i class="fas fa-th-large" aria-hidden="true"></i>
-            <label for="viewStyle">Visualizzazione:</label>
-            <select name="viewStyle" class="form-control">
-                <option value="blocchi">A blocchi</option>
-                <option value="linea">In linea</option>
-            </select>
-        </div>
         </form>
-
             <br>
             <!-- Display the result here -->
         <div id="resultContainer" class="mt-3 animate__animated animate__fadeIn">
             {% if result_strutture %}
-                <h2><i class="fas fa-home"></i> Lodging suggested</h2><br><br>
+                <div class="parent">
+                    <div class="child">
+                        <h2><i class="fas fa-home"></i> Lodging suggested</h2><br><br>
+                    </div>
+                    <div class="child">
+                        <i class="fas fa-th-large" aria-hidden="true"></i>
+                        <label for="viewStyle">Visualizzazione:</label>
+                        <select name="viewStyle" class="form-control">
+                            <option value="blocchi">A blocchi</option>
+                            <option value="linea">In linea</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="accommodation-list">
                     {% for struttura in result_strutture %}
                         <div class="accommodation-item">
@@ -144,7 +129,7 @@
                                 <p class="indirizzo">{{ struttura.indirizzo }}</p>
                             {% endif %}
                             {% if struttura.telefono %}  <!-- Telephone checkbox added -->
-                                <p class="telefono">Telefono: {{ struttura.telefono }}</p>
+                                <p class="telefono">Phone number: {{ struttura.telefono }}</p>
                             {% endif %}
                         </div>
                     {% endfor %}
