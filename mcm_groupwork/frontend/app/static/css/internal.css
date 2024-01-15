@@ -18,21 +18,39 @@ h1 {
 .accommodation-item {
     position: relative;
 }
-
+.searchbar-int{
+    justify-content: center;
+    width: 100%;
+}
+.form-control{
+    margin-right: 15px;
+}
+.title-int{
+    text-align: center;
+}
+.int-space{
+    margin-bottom: 4em;
+}
 .form-group.form-check {
     display: flex;
     align-items: center;
     margin-bottom: 15px; 
     
 }
+.form-group{
+    align-items: center;
+    display: flex;
+}
 .child {
     flex: 1;
-  margin: 10px;
+    margin: 10px;
   }
-  .child:first-child {
+.child:first-child {
     margin-right: 20px;
   }
-
+.width-searchbar{
+    width: 65% !important;
+}
   .result_title {
     font-size: 1.5em;
     margin-top: 0.83em;

@@ -58,19 +58,18 @@
 {% block content %}
 
     <div class="container mt-5">
-        <h1>Where do you want to go?</h1>
-        <h6>Here you can search for a city in Veneto</h6>
+        <h1 class="title-int">Where do you want to go?</h1>
+        <h6 class="title-int int-space">Here you can search for a city in Veneto</h6>
 
         <!-- WTForms Form to get input from the user -->
         
         <form id="searchForm" method="POST" action="">
             {{ form.csrf_token }}
             
-            <div class="form-group">
-                {{ form.person_name.label }}
-                {{ form.person_name(value=request.args.get('comune', ''), class="form-control", placeholder="Enter city...") }}
+            <div class="form-group searchbar-int int-space">
+                {{ form.person_name(value=request.args.get('comune', ''), class="form-control width-searchbar", placeholder="Enter city...") }}
+                {{ form.submit_field(class="btn btn-primary btn-green") }}
             </div>
-            {{ form.submit_field(class="btn btn-primary btn-green") }}
             <div class="check-background"> 
             <div class="form-group form-check">
                 {{ form.piscina_checkbox.label(class="form-check-label") }}
@@ -108,7 +107,7 @@
                     </div>
                     <div class="child">
                         <i class="fas fa-th-large" aria-hidden="true"></i>
-                        <label for="viewStyle">Visualizzazione:</label>
+                        <label for="viewStyle">Visualizzazione</label>
                         <select name="viewStyle" class="form-control">
                             <option value="blocchi">A blocchi</option>
                             <option value="linea">In linea</option>
