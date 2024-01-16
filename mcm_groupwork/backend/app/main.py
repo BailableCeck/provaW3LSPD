@@ -38,7 +38,7 @@ def read_item(
     fitness: Optional[bool] = Query(None),
     sauna: Optional[bool] = Query(None),
     aria_condizionata: Optional[bool] = Query(None),
-    animali_amessi: Optional[bool] = Query(None)
+    lago: Optional[bool] = Query(None)
 ):
     """
     Retrieve accommodation and museum information based on specified filters.
@@ -74,16 +74,19 @@ def read_item(
     if aria_condizionata is not None and aria_condizionata:
         results = results[results['ARIA CONDIZIONATA'] == 'Vero']
 
+    if lago is not None and lago:
+        results = results[results['LAGO'] == 'Vero']
+
     denominazione_alloggio = results['DENOMINAZIONE'].tolist()
     link_alloggio = results['SITO WEB'].tolist()
     indirizzo_alloggio = results['INDIRIZZO'].tolist()  
     numero_telefono = results['TELEFONO'].tolist()  
-
+    indirizzo_email = results['EMAIL'].tolist()
     results_musei = df_musei[df_musei['Comune'] == comune]
     denominazione_musei = results_musei['Nome'].tolist()
 
     result_list = []
-    for nome, link, indirizzo, telefono in zip(denominazione_alloggio, link_alloggio, indirizzo_alloggio, numero_telefono):
+    for nome, link, indirizzo, telefono, email in zip(denominazione_alloggio, link_alloggio, indirizzo_alloggio, numero_telefono, indirizzo_email):
         result_item = {"nome": nome}
         if pd.notna(link):
             result_item["link"] = link
@@ -91,6 +94,8 @@ def read_item(
             result_item["indirizzo"] = indirizzo
         if pd.notna(telefono):  
             result_item["telefono"] = telefono
+        if pd.notna(email):  
+            result_item["email"] = email
 
         result_list.append(result_item)
 
