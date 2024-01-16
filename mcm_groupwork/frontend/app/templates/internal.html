@@ -88,8 +88,8 @@
                 {{ form.aria_condizionata_checkbox(class="form-check-input") }}
             </div>
             <div class="form-group form-check">
-                {{ form.animali_amessi_checkbox.label(class="form-check-label") }}
-                {{ form.animali_amessi_checkbox(class="form-check-input") }}
+                {{ form.lago_checkbox.label(class="form-check-label") }}
+                {{ form.lago_checkbox(class="form-check-input") }}
             </div>
             <div class="form-group form-check">
                 {{ form.accesso_disabili_checkbox.label(class="form-check-label") }}
@@ -129,6 +129,13 @@
                             {% endif %}
                             {% if struttura.telefono %}  <!-- Telephone checkbox added -->
                                 <p class="telefono">Phone number: {{ struttura.telefono }}</p>
+                            {% endif %}
+                            {% if struttura.email %} 
+                                <p class="email">
+                                    <a href="mailto:{{ struttura.email }}">
+                                        <i class="fas fa-envelope text-white"></i>
+                                    </a>
+                                </p>
                             {% endif %}
                         </div>
                     {% endfor %}
