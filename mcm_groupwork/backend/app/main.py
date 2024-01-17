@@ -11,12 +11,12 @@ from datetime import datetime
 import pandas as pd
 from typing import Optional, List
 
-
 app = FastAPI()
 
-#Load data from .csv files
+# Load data from .csv files
 df = pd.read_csv('/app/app/output.csv')
 df_musei = pd.read_csv('/app/app/musei_veneto.csv')
+
 
 @app.get('/')
 def read_root():
@@ -30,15 +30,15 @@ def read_root():
 
 
 @app.get('/query/{comune}')
-#Filter by 7 variables below (True or False)
+# Filter by 7 variables below (True or False)
 def read_item(
-    comune: str,
-    piscina: Optional[bool] = Query(None),
-    accesso_disabili: Optional[bool] = Query(None),
-    fitness: Optional[bool] = Query(None),
-    sauna: Optional[bool] = Query(None),
-    aria_condizionata: Optional[bool] = Query(None),
-    animali_amessi: Optional[bool] = Query(None)
+        comune: str,
+        piscina: Optional[bool] = Query(None),
+        accesso_disabili: Optional[bool] = Query(None),
+        fitness: Optional[bool] = Query(None),
+        sauna: Optional[bool] = Query(None),
+        aria_condizionata: Optional[bool] = Query(None),
+        animali_amessi: Optional[bool] = Query(None)
 ):
     """
     Retrieve accommodation and museum information based on specified filters.
@@ -76,8 +76,8 @@ def read_item(
 
     denominazione_alloggio = results['DENOMINAZIONE'].tolist()
     link_alloggio = results['SITO WEB'].tolist()
-    indirizzo_alloggio = results['INDIRIZZO'].tolist()  
-    numero_telefono = results['TELEFONO'].tolist()  
+    indirizzo_alloggio = results['INDIRIZZO'].tolist()
+    numero_telefono = results['TELEFONO'].tolist()
 
     results_musei = df_musei[df_musei['Comune'] == comune]
     denominazione_musei = results_musei['Nome'].tolist()
@@ -87,9 +87,9 @@ def read_item(
         result_item = {"nome": nome}
         if pd.notna(link):
             result_item["link"] = link
-        if pd.notna(indirizzo):  
+        if pd.notna(indirizzo):
             result_item["indirizzo"] = indirizzo
-        if pd.notna(telefono):  
+        if pd.notna(telefono):
             result_item["telefono"] = telefono
 
         result_list.append(result_item)
@@ -98,4 +98,3 @@ def read_item(
         return {"comune": comune, "risultati": result_list, "musei_consigliati": denominazione_musei}
     else:
         return {"error": "Alloggio non trovato"}
-
