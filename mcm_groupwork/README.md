@@ -8,9 +8,7 @@ Moreover, Fetched goes beyond mere lodging recommendations and museum insights. 
 By seamlessly integrating accommodations, museum recommendations, and evocative snapshots of Veneto's provinces, Fetched provides users with an immersive exploration of this captivating Italian region.
 
 # Flask and FastAPI Dockerized Project
-This project demonstrates a simple web application using Flask as the frontend and FastAPI as the backend. The frontend allows to search for a city in Veneto and the result is given by the backend using a 
-
-????????????????? !! #search bar !!. ?????????????????????????????
+This project demonstrates a simple web application using Flask as the frontend and FastAPI as the backend. The frontend allows to search for a city in Veneto and the result is given by the backend using a search bar.
 
 The project is Dockerized for easy deployment.
 
@@ -41,6 +39,7 @@ Bidirectional communication is established between the Frontend (Flask) and Back
     - Dockerfile: Dockerfile for building the backend image.
     - main.py: Main backend application file.
     - requirements.txt: List of Python dependencies for the backend.
+    - test/: Folder for test files
 - `frontend/`: Flask frontend implementation.
     - Dockerfile: Dockerfile for building the frontend image.
     - static/: Folder for static files (CSS, JavaScript, etc.).
@@ -57,7 +56,7 @@ Bidirectional communication is established between the Frontend (Flask) and Back
 1. Clone the repository and navigate in the directory:
 
     ```bash
-    git clone REPO_URL
+    git clone git@github.com:martina28mb/mcm_groupwork.git
     cd mcm_groupwork
     ```
 
@@ -69,8 +68,6 @@ Bidirectional communication is established between the Frontend (Flask) and Back
 
     This will start both the frontend and backend containers.
     
-> **NOTE:** Uncomment the lines in the Dockerfiles that follow the section labeled `Command to run the application` and comment out the ones labeled `Command to keep the container running`. This will allow you to access the backend and frontend, as described in Point 3.
-
 3. Open your web browser and navigate to [http://localhost:8080](http://localhost:8080) to access the `frontend` and [http://localhost:8081](http://localhost:8081) to access the `backend`.
 
 4. Use the form on the frontend to search for a city in Veneto region, in Italy.
@@ -123,75 +120,3 @@ Make sure to replace `frontend` and `backend` with the appropriate service names
 
 When stopping containers individually, the `docker-compose down` command is not required.
 Now you can manage the lifecycle of your Docker containers more flexibly.
-
-
-## Debugging with Visual Studio Code and Docker Extension
-
-1. Open the project in Visual Studio Code:
-
-    ```bash
-    code .
-    ```
-
-2. Set breakpoints in your Python code as needed.
-
-3. Build and run the Docker containers:
-
-    ```bash
-    docker-compose up --build
-    ```
-
-    Ensure that your Docker containers are running.
-
-4a. Install the [Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) for Visual Studio Code.
-4b. Install the [Remote Development Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) for Visual Studio Code
-
-5. Open the "Docker" view in Visual Studio Code by clicking on the Docker icon in the Activity Bar.
-
-6. Under "Containers," you should see your running containers. Right-click on the container running your Flask or FastAPI application.
-
-7. Select "Attach Visual Studio Code" from the context menu. This will configure the container for debugging.
-
-8. Open the Run view in Visual Studio Code and select the "Python: Remote Attach" configuration.
-
-9. Click the "Run" button to start the debugger.
-
-10. Access the frontend in your web browser and trigger the actions you want to debug.
-
-### Notes:
-
-- Ensure that your Docker containers are running (`docker-compose up --build`) before attaching Visual Studio Code.
-
-- Adjust the container name in the "Docker: Attach to Node" configuration if needed.
-
-- The provided configurations assume that your Flask or FastAPI application is running with the debugger attached. Adjust the configurations if needed.
-
-- If using Flask, ensure that the Flask application is started with the `--no-reload` option to prevent automatic reloading, which can interfere with debugging.
-
-- Debugging FastAPI requires configuring the FastAPI application to run with the `--reload` option. Update the FastAPI Dockerfile CMD accordingly.
-
-- After the debugger is attached, you can use breakpoints, inspect variables, and step through your code as needed.
-
-
-## Adding New Modules to a Running Docker Container
-
-1. **Install Additional Modules:**
-    ```bash
-    pip install new_module
-    ```
-   Replace `new_module` with the names of the module you want to install.
-
-2. **Verify Installed Modules:**
-    ```bash
-    pip list
-    ```
-   This command displays a list of installed Python packages, including the newly added modules.
-
-3. **Optional: Update requirements.txt:**
-    ```bash
-    pip freeze > requirements.txt
-    ```
-   If you want to keep track of the installed modules, you may choose to update the `requirements.txt` file inside the container.
-
-
-Now, the additional Python modules are installed in the running container, and you've performed these actions directly from the VS Code terminal. If these changes are intended for production, consider updating the `requirements.txt` file and rebuilding the Docker container. 
