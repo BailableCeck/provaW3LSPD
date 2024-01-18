@@ -1,7 +1,7 @@
 """
 Frontend module for the Flask application.
 
-This module defines a simple Flask application that 
+This module defines a simple Flask application that
 serves as the frontend for the project.
 """
 
@@ -17,6 +17,7 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 """Configuration for the FastAPI backend URL."""
 FASTAPI_BACKEND_HOST = 'http://backend'
 BACKEND_URL = f'{FASTAPI_BACKEND_HOST}/query/'
+
 
 class QueryForm(FlaskForm):
     """
@@ -187,6 +188,6 @@ def internal():
 
     return render_template('internal.html', form=form, result_strutture=None, result_musei=None, error_message=error_message)
 
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
-

@@ -56,7 +56,7 @@ Bidirectional communication is established between the Frontend (Flask) and Back
 1. Clone the repository and navigate in the directory:
 
     ```bash
-    git clone REPO_URL
+    git clone git@github.com:martina28mb/mcm_groupwork.git
     cd mcm_groupwork
     ```
 
@@ -67,12 +67,10 @@ Bidirectional communication is established between the Frontend (Flask) and Back
     ```
 
     This will start both the frontend and backend containers.
-    
-> **NOTE:** Uncomment the lines in the Dockerfiles that follow the section labeled `Command to run the application` and comment out the ones labeled `Command to keep the container running`. This will allow you to access the backend and frontend, as described in Point 3.
 
 3. Open your web browser and navigate to [http://localhost:8080](http://localhost:8080) to access the `frontend` and [http://localhost:8081](http://localhost:8081) to access the `backend`.
 
-4. Use the form on the frontend to search for a city in Veneto region, in Italy.
+4. Click on the blocks in the home page to read informations about Veneto provinces and use the search bar to look for a city in Veneto region, in Italy. Suggested museums, if any, will be displayed below accomodations available in the city choosen.
 
 
 ## TEST SECTION
@@ -126,3 +124,19 @@ This command will generate HTML documentation for all modules in the current dir
 4. Access Generated Documentation:
 Once the command completes, some HTML files corresponding to the modules in the project will be generated. 
 Open these HTML files in your web browser to view the documentation.
+
+## LINTING WITH PYCODESTYLE
+Linting is the process of analyzing code for potential errors or stylistic issues. In order to do it, we use a tool called "pycodestyle", that checks Python code against the style conventions defined in PEP 8.
+
+1. Installation
+Make sure you have pycodestyle installed. If not, you can install it using pip:
+ pip install pycodestyle
+
+2. Run pycodestyle
+To verify the code, you have to execute in your terminal the following:
+ pycodestyle mcm_groupwork
+
+3. Check the results
+Once you execute the previous code in the terminal, you will visualize the results.
+
+
