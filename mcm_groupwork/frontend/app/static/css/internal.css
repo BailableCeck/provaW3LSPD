@@ -180,22 +180,31 @@ h1 {
 
 
   .museum-item table tbody tr:nth-child(odd) {
-    background-color: #008080; 
+    background-color: #008080bf; 
     color: white;
 }
 
 .museum-item table tbody tr:nth-child(even) {
-    background-color: #044a4a; 
+    background-color: #044a4acc; 
     color: white;
 }
 .museum-item table thead th {
-    background-color: #000000;  
-
-    
-    color: #ffffff; 
+    border-radius: 7px;
+    background-color: #bbb; 
+    color: #ffffff;
+    border: 0px !important; 
 }
 .accommodation-list, .museum-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
+}
+.table{
+    color: white !important;
+}
+.rounded-table{
+    border-radius: 7px;
+}
+.museum-width{
+    width: 60%;
 }

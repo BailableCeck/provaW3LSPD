@@ -146,9 +146,9 @@
             {% if result_musei %}
                 <br><br>
                 <h2><i class="fas fa-university"></i> Museums suggested</h2><br>
-                <div class="museum-item">
+                <div class="museum-item museum-width">
                     
-                    <table class="table table-bordered">
+                    <table class="table">
                         <thead>
                             <tr>
                               
@@ -160,7 +160,7 @@
                             {% for index in range(museums|length) %}
                                 <tr>
                                 
-                                    <td>{{ museums[index].strip() }}</td>
+                                    <td class="rounded-table">{{ museums[index].strip() }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
