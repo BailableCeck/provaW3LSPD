@@ -39,6 +39,7 @@ Bidirectional communication is established between the Frontend (Flask) and Back
     - Dockerfile: Dockerfile for building the backend image.
     - main.py: Main backend application file.
     - requirements.txt: List of Python dependencies for the backend.
+    - tests: Folder for testing code.
 - `frontend/`: Flask frontend implementation.
     - Dockerfile: Dockerfile for building the frontend image.
     - static/: Folder for static files (CSS, JavaScript, etc.).
