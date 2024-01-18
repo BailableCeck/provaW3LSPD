@@ -189,6 +189,7 @@ h1 {
     color: white;
 }
 .museum-item table thead th {
+    border-radius: 7px;
     background-color: #bbb; 
     color: #ffffff;
     border: 0px !important; 
@@ -200,4 +201,7 @@ h1 {
 }
 .table{
     color: white !important;
+}
+.rounded-table{
+    border-radius: 7px;
 }
