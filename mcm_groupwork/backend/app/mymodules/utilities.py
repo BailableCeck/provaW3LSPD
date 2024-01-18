@@ -1,3 +1,3 @@
 def normalize_string(value):
-    # Placeholder string normalization logic
-    return value.lower().strip()
+    # String normalization logic
+    return value.upper().strip()

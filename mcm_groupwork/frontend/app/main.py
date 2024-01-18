@@ -155,7 +155,7 @@ def internal():
             """Extract and display the result from the FastAPI backend."""
             data = response.json()
             accomodations = data.get('risultati', [])
-
+            print(accomodations)
             if accomodations:
                 result_strutture = []
                 for struttura in accomodations:

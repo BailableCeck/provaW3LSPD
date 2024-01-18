@@ -1,25 +1,68 @@
-# main.py
+"""
+Backend module for the FastAPI application.
+
+This module defines a FastAPI application that serves
+as the backend for the project.
+"""
+
 from fastapi import FastAPI, Query
-from mymodules import data_loader, filtering, result_formatter, utilities
+from fastapi.responses import JSONResponse
+from datetime import datetime
+import pandas as pd
+from typing import Optional, List
+from .mymodules import formatting, utilities, filtered
 
 app = FastAPI()
 
 # Load data from .csv files
-df = data_loader.load_accommodation_data('/app/app/output.csv')
-df_musei = data_loader.load_musei_data('/app/app/musei_veneto.csv')
+df = pd.read_csv('/app/app/output.csv')
+df_musei = pd.read_csv('/app/app/musei_veneto.csv')
+
+
+@app.get('/')
+def read_root():
+    """
+    Root endpoint for the backend.
+
+    Returns:
+        dict: A simple greeting.
+    """
+    return {"Funziona?": "World"}
+
 
 @app.get('/query/{comune}')
+# Filter by 7 variables below (True or False)
 def read_item(
     comune: str,
-    piscina: bool = Query(None),
-    accesso_disabili: bool = Query(None),
-    fitness: bool = Query(None),
-    sauna: bool = Query(None),
-    aria_condizionata: bool = Query(None),
-    lago: bool = Query(None)
+    piscina: Optional[bool] = Query(None),
+    accesso_disabili: Optional[bool] = Query(None),
+    fitness: Optional[bool] = Query(None),
+    sauna: Optional[bool] = Query(None),
+    aria_condizionata: Optional[bool] = Query(None),
+    lago: Optional[bool] = Query(None)
 ):
-    # Use functions from filtering.py and result_formatter.py here
+    """
+    Retrieve accommodation and museum information based on specified filters.
+
+    Args:
+        comune (str): The municipality for which to retrieve information.
+        piscina (Optional[bool]): Filter by swimming pool availability.
+        accesso_disabili (Optional[bool]): Filter by disabled access.
+        fitness (Optional[bool]): Filter by fitness facilities availability.
+        sauna (Optional[bool]): Filter by sauna availability.
+        aria_condizionata (Optional[bool]): Filter by air conditioning.
+        lago (Optional[bool]): Filter by lake availability.
+
+    Returns:
+        dict: Accommodation and museum information based on specified filters.
+    """
     comune = utilities.normalize_string(comune)
-    results = filtering.apply_filters(df, piscina=piscina, accesso_disabili=accesso_disabili, fitness=fitness, sauna=sauna, aria_condizionata=aria_condizionata, lago=lago)
-    formatted_results = result_formatter.format_results(results, df_musei)
-    return formatted_results
+    results = df[df['COMUNE'] == comune]
+    results = filtered.apply_filters(results, piscina, accesso_disabili, fitness, sauna, aria_condizionata, lago)
+    results_musei = df_musei[df_musei['Comune'] == comune]
+    denominazione_musei = results_musei['Nome'].tolist()
+
+    if denominazione_musei or results['DENOMINAZIONE'].tolist():
+        return {"comune": comune, "risultati": formatting.format_results(results), "musei_consigliati": denominazione_musei}
+    else:
+        return {"error": "Alloggio non trovato"}
